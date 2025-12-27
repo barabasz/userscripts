@@ -28,16 +28,16 @@
             text-decoration-color: currentColor;
         }
         #mw-content-text a:not(.new) {
-            color: #000070;
+            color: #000070 !important;
         }
         #mw-content-text a:not(.new):hover {
-            color: #0000e0;
+            color: #0000e0 !important;
         }
         #mw-content-text a.new {
-            color: #700000;
+            color: #700000 !important;
         }
         #mw-content-text a.new:hover {
-            color: #e00000;
+            color: #e00000 !important;
         }
     `;
     document.head.appendChild(style);
