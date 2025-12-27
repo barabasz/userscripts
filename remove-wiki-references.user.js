@@ -13,6 +13,7 @@
 // @updateURL    https://github.com/barabasz/userscripts/raw/main/remove-wiki-references.user.js
 // @downloadURL  https://github.com/barabasz/userscripts/raw/main/remove-wiki-references.user.js
 // ==/UserScript==
+
 (function() {
     'use strict';
     document.querySelectorAll('sup.reference').forEach(el => el.remove());
