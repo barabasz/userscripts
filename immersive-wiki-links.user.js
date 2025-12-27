@@ -19,20 +19,25 @@
 
     const style = document.createElement('style');
     style.textContent = `
-        #mw-content-text a:not(.new) {
-            color: #0d0068;
+        #mw-content-text a {
             text-decoration: underline;
             text-decoration-color: transparent;
             transition: color 0.2s ease, text-decoration-color 0.2s ease;
         }
-
-        #mw-content-text a:not(.new):hover {
-            color: #0645ad;
+        #mw-content-text a:hover {
             text-decoration-color: currentColor;
         }
-
+        #mw-content-text a:not(.new) {
+            color: #000070;
+        }
+        #mw-content-text a:not(.new):hover {
+            color: #0000e0;
+        }
         #mw-content-text a.new {
-            text-decoration: none;
+            color: #700000;
+        }
+        #mw-content-text a.new:hover {
+            color: #e00000;
         }
     `;
     document.head.appendChild(style);
