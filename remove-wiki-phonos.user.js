@@ -18,23 +18,13 @@
     'use strict';
     const content = document.querySelector('div#mw-content-text');
     if (content) {
-        content.querySelectorAll('span.ext-phonos').forEach(el => el.remove());
-
-        // Remove extra spaces before punctuation marks and closing brackets
-        const walker = document.createTreeWalker(
-            content,
-            NodeFilter.SHOW_TEXT,
-            null,
-            false
-        );
-
-        const textNodes = [];
-        while (walker.nextNode()) {
-            textNodes.push(walker.currentNode);
-        }
-
-        textNodes.forEach(node => {
-            node.textContent = node.textContent.replace(/\s+([.,;:!?\)\]}])/g, '$1');
+        content.querySelectorAll('span.ext-phonos').forEach(el => {
+            // Remove trailing space from previous text node
+            const prevNode = el.previousSibling;
+            if (prevNode && prevNode.nodeType === Node.TEXT_NODE) {
+                prevNode.textContent = prevNode.textContent.replace(/\s+$/, '');
+            }
+            el.remove();
         });
     }
 })();
