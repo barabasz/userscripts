@@ -16,5 +16,20 @@
 
 (function() {
     'use strict';
-    document.querySelectorAll('sup.reference').forEach(el => el.remove());
+    const content = document.querySelector('div#mw-content-text');
+    if (content) {
+        // Remove reference markers
+        document.querySelectorAll('sup.reference').forEach(el => el.remove());
+
+        // Remove references section and its heading
+        let refSection = content.querySelector('div.refsection, div.mw-references-wrap, div.reflist');
+        if (refSection) {
+            const prevElement = refSection.previousElementSibling;
+            if (prevElement && prevElement.classList.contains('mw-heading') &&
+                prevElement.classList.contains('mw-heading2')) {
+                prevElement.remove();
+            }
+            refSection.remove();
+        }
+    }
 })();

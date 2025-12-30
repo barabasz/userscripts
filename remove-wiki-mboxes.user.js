@@ -18,6 +18,6 @@
     'use strict';
     const content = document.querySelector('div#mw-content-text');
     if (content) {
-        content.querySelectorAll('div.metadata.plainlinks').forEach(el => el.remove());
+        content.querySelectorAll('div.metadata.plainlinks, div.zastrzezenia').forEach(el => el.remove());
     }
 })();
