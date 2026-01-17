@@ -17,24 +17,42 @@
 (function() {
     'use strict';
 
+    function removeUIElements() {
+        const content = document.querySelector('div#mw-content-text');
+
+        if (content) {
+            // Remove phonetic pronunciation elements
+            content.querySelectorAll('span.ext-phonos').forEach(el => {
+                // Remove trailing space from previous text node
+                const prevNode = el.previousSibling;
+                if (prevNode && prevNode.nodeType === Node.TEXT_NODE) {
+                    prevNode.textContent = prevNode.textContent.replace(/\s+$/, '');
+                }
+                el.remove();
+            });
+
+            // Remove metadata notice boxes
+            content.querySelectorAll('div.metadata.plainlinks, div.zastrzezenia').forEach(el => el.remove());
+
+            // Remove citation needed templates
+            content.querySelectorAll('sup.Template-Fact').forEach(el => el.remove());
+        }
+    }
+
+    // Initial cleanup
+    removeUIElements();
+
+    // Observe for dynamically loaded content
+    const observer = new MutationObserver(() => {
+        removeUIElements();
+    });
+
     const content = document.querySelector('div#mw-content-text');
-
     if (content) {
-        // Remove phonetic pronunciation elements
-        content.querySelectorAll('span.ext-phonos').forEach(el => {
-            // Remove trailing space from previous text node
-            const prevNode = el.previousSibling;
-            if (prevNode && prevNode.nodeType === Node.TEXT_NODE) {
-                prevNode.textContent = prevNode.textContent.replace(/\s+$/, '');
-            }
-            el.remove();
+        observer.observe(content, {
+            childList: true,
+            subtree: true
         });
-
-        // Remove metadata notice boxes
-        content.querySelectorAll('div.metadata.plainlinks, div.zastrzezenia').forEach(el => el.remove());
-
-        // Remove citation needed templates
-        content.querySelectorAll('sup.Template-Fact').forEach(el => el.remove());
     }
 
     // Remove mw-data-after-content
