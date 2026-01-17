@@ -27,7 +27,8 @@
         // List of reference section IDs in different languages
         const referenceIds = [
             'References',           // English
-            'Przypisy',              // Polish
+            'Notes',                // English alternative
+            'Przypisy',             // Polish
             'Einzelnachweise',      // German
             'Notes_et_références',  // French
             'Примечания',           // Russian
@@ -53,6 +54,17 @@
 
         // Remove references section content
         content.querySelectorAll('div.refsection, div.mw-references-wrap, div.reflist').forEach(el => el.remove());
+
+        // Remove TOC entries linking to reference sections
+        referenceIds.forEach(id => {
+            const tocLinks = document.querySelectorAll(`a[href="#${CSS.escape(id)}"]`);
+            tocLinks.forEach(link => {
+                const tocItem = link.closest('li');
+                if (tocItem) {
+                    tocItem.remove();
+                }
+            });
+        });
     }
 
     // Initial cleanup
