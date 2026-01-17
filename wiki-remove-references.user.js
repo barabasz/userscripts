@@ -24,8 +24,25 @@
         // Remove reference markers
         document.querySelectorAll('sup.reference').forEach(el => el.remove());
 
-        // Find and remove References heading by h2 id
-        const refHeadings = content.querySelectorAll('h2#References, h2#Przypisy, h2#Notes');
+        // List of reference section IDs in different languages
+        const referenceIds = [
+            'References',           // English
+            'Przypisy',              // Polish
+            'Einzelnachweise',      // German
+            'Notes_et_références',  // French
+            'Примечания',           // Russian
+            '脚注',                 // Japanese/Chinese
+            'Referencias',          // Spanish
+            'Note',                 // Italian
+            'Referências',          // Portuguese
+            'Παραπομπές'            // Greek
+        ];
+
+        // Build selector for all reference heading IDs
+        const selector = referenceIds.map(id => `h2#${CSS.escape(id)}`).join(', ');
+
+        // Find and remove References headings
+        const refHeadings = content.querySelectorAll(selector);
         refHeadings.forEach(h2 => {
             // Remove the parent mw-heading div
             const headingDiv = h2.closest('div.mw-heading');
