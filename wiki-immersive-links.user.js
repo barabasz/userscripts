@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Immersive Wiki Links
+// @name         Wiki Immersive Links
 // @namespace    https://github.com/barabasz
 // @author       @barabasz
-// @version      2025-12-27
+// @version      2026-01-17
 // @description  Makes Wikipedia links more immersive: no underline (only on hover) with custom colors
 // @icon         https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://en.wikipedia.org&size=64
 // @match        *://*.wikipedia.org/*
@@ -10,8 +10,8 @@
 // @license      MIT
 // @homepageURL  https://github.com/barabasz/userscripts
 // @supportURL   https://github.com/barabasz/userscripts/issues
-// @updateURL    https://github.com/barabasz/userscripts/raw/main/immersive-wiki-links.user.js
-// @downloadURL  https://github.com/barabasz/userscripts/raw/main/immersive-wiki-links.user.js
+// @updateURL    https://github.com/barabasz/userscripts/raw/main/wiki-immersive-links.user.js
+// @downloadURL  https://github.com/barabasz/userscripts/raw/main/wiki-immersive-links.user.js
 // ==/UserScript==
 
 (function() {
