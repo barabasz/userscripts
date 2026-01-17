@@ -3,7 +3,7 @@
 // @namespace    https://github.com/barabasz
 // @author       @barabasz
 // @version      2026-01-17
-// @description  Removes various UI elements from Wikipedia pages (phonos, mboxes, mw-data-after-content, footer)
+// @description  Removes various UI elements from Wikipedia pages (phonos, mboxes, mw-data-after-content, footer, citation needed)
 // @icon         https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://en.wikipedia.org&size=64
 // @match        *://*.wikipedia.org/*
 // @grant        none
@@ -32,6 +32,9 @@
 
         // Remove metadata notice boxes
         content.querySelectorAll('div.metadata.plainlinks, div.zastrzezenia').forEach(el => el.remove());
+
+        // Remove citation needed templates
+        content.querySelectorAll('sup.Template-Fact').forEach(el => el.remove());
     }
 
     // Remove mw-data-after-content
