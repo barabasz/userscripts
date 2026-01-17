@@ -16,8 +16,28 @@
 
 (function() {
     'use strict';
-    const footer = document.querySelector('div.wiki-footer');
-    if (footer) {
-        footer.remove();
+
+    function removeFooter() {
+        const footer = document.querySelector('div.wiki-footer');
+        if (footer) {
+            footer.remove();
+            return true;
+        }
+        return false;
+    }
+
+    // Try immediate removal
+    if (!removeFooter()) {
+        // If not found, observe DOM changes
+        const observer = new MutationObserver(() => {
+            if (removeFooter()) {
+                observer.disconnect();
+            }
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
     }
 })();
