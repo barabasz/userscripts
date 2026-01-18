@@ -32,7 +32,9 @@
             'Einzelnachweise',      // German
             'Notes_et_références',  // French
             'Примечания',           // Russian
-            '脚注',                 // Japanese/Chinese
+            '脚注',                 // Japanese
+            '資料來源',              // Chinese
+            '注釋',                 // Chinese (notes)
             'Referencias',          // Spanish
             'Note',                 // Italian
             'Referências',          // Portuguese
